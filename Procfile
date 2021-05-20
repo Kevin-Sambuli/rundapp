@@ -1,0 +1,1 @@
+web: gunicorn LandIs.wsgi --log-file -

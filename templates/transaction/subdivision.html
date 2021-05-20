@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <center>
+        <h1 style="color: #1e7e34">Parcel Subdivision Form</h1>
+            <h3 style="color: #17a2b8">This are the Parcel(s) you can apply for subdivision.</h3>
+               <p style="color: darkgreen"> [ {% for parcel in parcels %}
+                    {{ parcel }},
+                {% endfor %} ]</p>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+          </form>
+        <br>
+        <p ><a style="color: #17a2b8" href="{% url 'home' %}">Return to home</a></p>
+        <hr>
+    </center>
+
+
+{% endblock %}

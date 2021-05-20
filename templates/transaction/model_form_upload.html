@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <center>
+        <h1 class="display-4" style="alignment: center">Ardhi File Upload</h1>
+        <h3 style="color: #17a2b8">This are the Parcel(s) you can transfer.</h3>
+           <p style="color: darkgreen"> [ {% for parcel in parcels %}
+                {{ parcel }},
+            {% endfor %} ]</p>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <button type="submit">Upload</button>
+        </form>
+        <h4> <a style="color: #17a2b8" href="{% url 'home' %}">Return to homepage</a> </h4>
+    <hr>
+    </center>
+{% endblock %}
