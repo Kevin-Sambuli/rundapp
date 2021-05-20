@@ -76,7 +76,6 @@ INSTALLED_APPS = [
     'transaction',
     'payments',
 
-    'social_django',
     'rest_framework',
     'rest_framework.authtoken',
 ]
