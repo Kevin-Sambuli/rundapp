@@ -4,6 +4,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 from . import views
+from .tables import usersTable
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -37,6 +38,8 @@ urlpatterns = [
     path('reset/done/',
          auth_views.PasswordResetCompleteView.as_view(template_name='accounts/password_reset_complete.html'),
          name='password_reset_complete'),
+     # path("people/", usersTable.as_view())
+
 ]
 
 # if settings.DEBUG:

@@ -2,6 +2,8 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+# import django_tables2 as tables
+# from django_tables2 import SingleTableView
 
 from accounts.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
 from .models import Account
@@ -116,12 +118,25 @@ def home_screen_view(request, *args, **kwargs):
     return render(request, "index.html", context)
 
 
-# view to display all users
-def user_list_view(request):
-    # User = get_user_model()
-    # return render(request, 'users_list.html', {'users': User.objects.all()})
-    context = {}
-    users = Account.objects.all()
-    context['users'] = users
 
-    return render(request, "users_list.html", context)
+# # Create your views here.
+# class ProjectListView(SingleTableView):
+#     model = Project
+#     table_class = ProjectTable
+#     template_name = '/projects.html'
+
+
+# class ProjectTable(tables.Table):
+#     class Meta:
+#         model = Account
+#         template_name = "accounts/custom.html"
+
+# # view to display all users
+# def user_list_view(request):
+#     # User = get_user_model()
+#     # return render(request, 'users_list.html', {'users': User.objects.all()})
+#     context = {}
+#     users = Account.objects.all()
+#     context['users'] = users
+
+#     return render(request, "accounts/account-users.html", context)
