@@ -95,6 +95,8 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'accounts.Account'
+# sign up form
+SIGNUP_FORM_CLASS = 'accounts.forms.RegistrationForm'
 
 
 MIDDLEWARE = [
