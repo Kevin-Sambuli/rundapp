@@ -44,7 +44,7 @@ else:
 
 # ALLOWED_HOSTS = ['https://lisrunda.herokuapp.com/', '0c08c280dc9d.ngrok.io', '127.0.0.1', 'localhost']
 
-ALLOWED_HOSTS = ['rundapp.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['rundapp.herokuapp.com', 'land-info.herokuapp.com','127.0.0.1', 'localhost']
 
 DATABASES = {
     'default': {
