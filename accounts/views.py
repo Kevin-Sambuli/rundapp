@@ -31,14 +31,9 @@ def registration_view(request):
             account = authenticate(first_name=first_name, last_name=last_name, email=email,
                                    username=username, gender=gender, kra_pin=kra_pin, id_no=id_no,
                                    dob=dob, phone=phone, password=password)
-
-            login(request, account)
-            subject = 'Runda LIS registration.'
-            message = f'Hi {first_name} {last_name},Thank you for registering to our services'
-
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email], fail_silently=False, )
-
-            # return redirect('success')
+            if account:
+                login(request, account)
+                
             return redirect('home')
         else:
             context['registration_form'] = form
