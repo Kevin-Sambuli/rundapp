@@ -1,45 +1,25 @@
-# from pathlib import Path
+from pathlib import Path
 import os
-# import environ
+import environ
 
-# from django.contrib.messages import constants as messages
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# env = environ.Env(DEBUG=(bool, False))
-# environ.Env.read_env(env_file='.env')
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env(env_file='.env')
 
-# DEBUG = env('DEBUG')
-# ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
-# SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: keep the secret key used in production secret!
+ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
+
 SECRET_KEY = 'j^5oh%l-(#4lsu63xhkuyogu!i&)untvwd430uhcvb4kvi70(l'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-if DEBUG:
-    # EMAIL_BACKEND = env("EMAIL_BACKEND")
-    # EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-    # EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-    # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.gmail.com'
+DEBUG = False
+
+if DEBUG == False:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     EMAIL_HOST_USER = 'sambulikevin@gmail.com'
-    EMAIL_HOST_PASSWORD = 'kevoh1995'
-    EMAIL_USE_TLS = True
-    EMAIL_PORT = 587
-    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-else:
-    EMAIL_HOST = 'smtp.mailgun.org'
-    EMAIL_PORT = 587
-    EMAIL_HOST_USER = 'postmaster@sandboxbc8f324eb8104fea958b1b95394167c9.mailgun.org'
-    EMAIL_HOST_PASSWORD = 'f6d094eddcd50e8df6476ab79ddcf554-71b35d7e-786f6a53'
-    EMAIL_USE_TLS = True
-    EMAIL_USE_SSL = False
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # ALLOWED_HOSTS = ['https://lisrunda.herokuapp.com/', '0c08c280dc9d.ngrok.io', '127.0.0.1', 'localhost']
@@ -56,17 +36,6 @@ DATABASES = {
         'PORT': '5432'
     },
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': env("PG_ENGINE"),
-#         'NAME': env("PG_DATABASE_NAME"),
-#         'USER': env("POSTGRES_USER"),
-#         'PASSWORD': env("POSTGRES_PASS"),
-#         'HOST': env("PG_HOST"),
-#         'PORT': env("PG_PORT"),
-#     }
-# }
 
 
 # Application definition
@@ -98,6 +67,8 @@ AUTH_USER_MODEL = 'accounts.Account'
 # sign up form
 SIGNUP_FORM_CLASS = 'accounts.forms.RegistrationForm'
 
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,8 +104,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'LandIs.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
 # Password validation
@@ -160,7 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
